@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两数之和</title>
+</head>
+<body>
+  <div>
+    1.
+  </div>
+  <script>
+    function addNum (num,target){
+      var targetNum = [];
+      var a = 0;
+      for(var i = 0; i < num.length-1; i++) {
+        for(var j = i+1; j < num.length; j++){
+          if(target === num[i] + num[j]){
+            // targetNum[a]= [i,j];
+            // a++
+            return [i,j]
+          }
+        }
+      }
+      return targetNum
+    }
+    console.log(addNum([1,4,7,3,2,5,6],7));
+  </script>
+</body>
+</html>
