@@ -5,10 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>两数之和</title>
+  <style>
+    .add-num {
+      font-size:16px;
+      font-weight: 500px;
+      width: 400px;
+      height: 250px;
+      border: 1px solid blue;
+      color: black;
+      margin: 30px auto;
+      overflow: auto;
+      padding-top: 5px;
+      line-height: 30px;
+    }
+
+    .btn {
+      margin: 10px;
+      width: 60px;
+      height: 25px;
+      background-color: rgb(159, 89, 220);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
-  <div>
-    1.
+  <div class="add-num">
+    1.按顺序选出第一个，与后面每个数字相加
+    <br>
+    2.取出两个数字和等于目标值的索引值放入空数组中
+    <!-- 请输入数组: <input type="text" class="arr">
+    <br>
+    请输入目标值： <input type="text" class="target"> -->
+    <button class="btn">
+      addnum
+    </button>
+    <div class="targetvalue">
+    </div>  
   </div>
   <script>
     function addNum (num,target){
@@ -17,15 +51,23 @@
       for(var i = 0; i < num.length-1; i++) {
         for(var j = i+1; j < num.length; j++){
           if(target === num[i] + num[j]){
-            // targetNum[a]= [i,j];
-            // a++
-            return [i,j]
+            targetNum[a]= [i,j];
+            a++
+            // return [i,j]取出第一个等于rarget数字
           }
         }
       }
       return targetNum
     }
     console.log(addNum([1,4,7,3,2,5,6],7));
+    let targetvalueEle = document.querySelector('.targetvalue');
+    let addnumEle = document.querySelector('.btn');
+    // let arrEle = document.querySelector('.arr');
+    // let targetEle = document.querySelector('.target');
+    
+    addnumEle.addEventListener('click',function(){
+      targetvalueEle.innerHTML = addNum([1,4,7,3,2,5,6],7)
+    })
   </script>
 </body>
 </html>

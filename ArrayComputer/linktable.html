@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链表</title>
+</head>
+<body>
+  <div>
+    1.两数相加，链式。数组对应位数相加大于9就向前进1
+    <br>
+    2. 求出l1和l2长度大小，不足的用0填补
+    <br>
+    3.查看l3中是否有进的一有加1无加0
+    <br>
+    4.假如相加大于9，取余并且l3下一位加1;将每次相加的值放进l3中
+    <br>
+    5.最后输出l3
+  </div>
+  <script>
+    function linktable (l1,l2){
+      var l3 = [];
+      var maxlength = l1.length > l2.length ? l1.length : l2.length;
+      for(var i = 0; i < maxlength; i++){
+        var l1num = l1[i]===undefined ? 0 : l1[i];
+        var l2num = l2[i] === undefined ? 0 : l2[i]; 
+        var l3num = l3[i] ? 1 : 0;
+        var allnum = l1num + l2num + l3num;
+        if( allnum > 9){
+          // debugger
+          var num1 = allnum%10
+          l3[i] = num1;
+          l3[i+1] = 1;
+        }else {
+          // debugger
+          var num2 = allnum;
+          l3[i] = num2
+        } 
+      }
+      return l3
+    } 
+    console.log(linktable([1,9,3],[3,4,7,9]))
+  </script>
+</body>
+</html>
