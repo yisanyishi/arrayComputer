@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不重复字符串</title>
+  <style>
+    .norepeat {
+      font-size:16px;
+      font-weight: 500px;
+      width: 400px;
+      height: 400px;
+      border: 1px solid blue;
+      color: black;
+      margin: 30px auto;
+      overflow: auto;
+      padding-top: 5px;
+      line-height: 30px;
+    }
+    .writevalue {
+      width: 400px;
+      margin:0 auto
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="norepeat">
+      1.任务：找出字符串最长的不重复的子字符长度
+      <br>
+      2.第一步遍历字符串将不重复子字符存入newstr中
+      <br>
+      3.1.设置beginlength初始值为零
+      <br>
+      3.2当遍历的字符与newstr中字符重复时,比较长度大小，将长的数值存入beginlength
+      <br>
+      4.最后返回beginlength
+      <br>
+      注意当字符串最后一个跟newstr没重复时，会添加到newstr只不会进行比较，所以需要多循环一次，进行比较
+      <br>
+      扩展： 获取最长子字符串
+      <br>
+      1.当newstr长度等于beginlength时存入空数组maxsubstr/可能存在多个
+      <br>
+      2.当beginlength小于newstr的长度时，将maxsubstr值替换成当前newstr的值
+      <br>
+      3.当大于时不用管
+    </div>
+  </div>
+  <div class="writevalue">
+    请输入值: <input type="text" class="strValue">
+    <button class="btn">
+      norepeat
+    </button>
+    <div class="maxlength">
+
+    </div>
+    <div class="maxsubstr">
+
+    </div>
+  </div>
+  <script>
+    function norepeatSubstr (str){
+      var maxsubstr = []
+      var beginlength = 0;
+      var newstr = [];
+      for(var i = 0; i < str.length + 1; i++){
+        if(newstr.indexOf(str[i]) === -1 && i !== str.length){
+          newstr.push(str[i]);
+        }else {
+          somelength = newstr.length;
+          if(somelength === beginlength){
+            maxsubstr.push(newstr)
+          }else if(somelength > beginlength) {
+            maxsubstr = [newstr]
+          }
+          beginlength = somelength > beginlength ? somelength : beginlength
+          newstr = [str[i]];
+        }
+      }
+      return [beginlength,maxsubstr];
+    }
+    // console.log(norepeatSubstr('bbbb'));
+    let strValueEle = document.querySelector('.strValue');
+    let btnEle = document.querySelector('.btn');
+    let maxlengthEle = document.querySelector('.maxlength');
+    let maxsubstrEle = document.querySelector('.maxsubstr');
+    btnEle.addEventListener('click',function() {
+      var norepeat = norepeatSubstr(strValueEle.value);
+      console.log(norepeat)
+      maxlengthEle.innerHTML = '不重复子字符串最大长度: ' + norepeat[0]
+      maxsubstrEle.innerHTML = '不重复子字符串的值: ' + norepeat[1]
+    })
+  </script>
+</body>
+</html>

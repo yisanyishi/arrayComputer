@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正序中位数</title>
+</head>
+<body>
+  
+  <script>
+    function median (nums1,nums2) {
+      // debugger
+      var medianvalue = null;
+      var tobigger = nums1.concat(nums2).sort(function(a,b){
+        return a-b;
+      })
+      if(tobigger.length%2 === 1){
+        medianvalue = tobigger[tobigger.length/2 + 0.5]
+      }else {
+        medianvalue = (tobigger[tobigger.length/2] + tobigger[tobigger.length/2-1])/2
+      }
+      return medianvalue
+    }
+    console.log(median([1,2,3],[3,4,5]))
+  </script>
+</body>
+</html>
