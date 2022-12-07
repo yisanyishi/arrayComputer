@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最大面积</title>
+  <style>
+    .maxarea {
+      font-size:16px;
+      font-weight: 500px;
+      width: 400px;
+      height: 400px;
+      border: 1px solid blue;
+      color: black;
+      margin: 30px auto;
+      overflow: auto;
+      padding-top: 5px;
+      line-height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="maxarea">
+    1.目标取出最大面积，以i的距离为长，array[i]为宽
+    2.按顺序 求出后面每一个和这个的面积 保留大的面积
+  </div>
+
+  <script>
+    var arr = [1,8,6,2,5,8,3,7]
+    function maxArea(array){
+      var maxarea = 0;
+      for(var i =0; i < array.length-1; i++){
+        for(var j = i+1; j < array.length; j++){
+          var height = array[i] > array[j] ? array[i] : array[j]
+          newArea = (j-i)*height;
+          maxarea = newArea > maxarea ? newArea : maxarea 
+        }
+      }
+      return maxarea
+    }
+    console.log(maxArea([3,5,5,6,2,4,6,2,4,8]))
+  </script>
+</body>
+</html>
