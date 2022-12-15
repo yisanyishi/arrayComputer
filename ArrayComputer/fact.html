@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var letterCombinations = function(digits) {
+      if(digits.length==0) return [];
+      const res=[];
+      const cur=[];
+      const map=new Map([['2','abc'], ['3','def'], ['4','ghi'], ['5','jkl'], ['6','mno'], ['7','pqrs'], ['8', 'tuv'],['9','wxyz']]);
+      
+      const dfs = (cur, k) => {
+        if(cur.length === digits.length){
+          res.push(cur);
+          // console.log('debugger')
+          return;
+        }
+
+        // digits: 234
+        const letters = map.get(digits[k]);
+        // debugger
+        for(let i = 0; i < letters.length; i++){
+          console.log('dfs:', cur+letters[i])
+          dfs(cur+letters[i], k+1); 
+          
+          // dfs('a', 1);  dfs('b', 1); dfs('c', 1);
+          // dfs('ad', 2);  dfs('ae', 2); dfs('af', 2);
+        }
+      }
+
+      dfs('', 0);
+
+      return res;
+  };
+  console.log(letterCombinations('234'))
+  </script>
+</body>
+</html>
